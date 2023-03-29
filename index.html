@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator ND</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: large;
+        }
+        .calculator{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        button,
+        select{
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button{
+            background-color: #4caf50;
+            color: white;
+        }
+
+        table{
+            position: relative;
+            top: 100px;
+            right: 500px;
+            margin-top: 50px;
+            border: none;
+            width: 100%;
+        }
+        th,td{
+            padding: 8px;
+            text-align: left;
+            border: none;
+        }
+        th{
+            background-color: #4caf50;
+            color: white;
+            border: none;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="calculator">
+    <input type="number" id="first-number" placeholder="First number"/>
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="number" id="second number" placeholder="Second number"/>
+    <button onclick="calculate()">solve</button>
+    <table id="results"></table>
+    </div>
+    <script>
+        function calculate(){
+            const firstNumber = parseFloat(
+                document.getElementById("first-number").value
+            );
+            const operator=document.getElementById("operator").value;
+            const secondNumber=parseFloat(
+                document.getElementById("second-number").value
+            );
+
+            let result;
+            switch(operator){
+                case "+":
+                    result=firstNumber + secondNumber;
+                    break;
+                case "-":
+                    result=firstNumber - secondNumber;
+                    break;
+                case "*":
+                    result=firstNumber * secondNumber;
+                    break;
+                case "/":
+                    result=firstNumber / secondNumber;
+                    break;
+                default:
+                    result="invalid operator";
+            }
+            const table = document.getElementById("result");
+            const row1 = table.insertRow();
+            const cell1= row1.insertCell(0);
+            const cell2 =row1.insertCell(1);
+            cell1.innerHTML = "First number:";
+            cell2.innerHTML = "first number:";
+            const row2= table.insertRow();
+            const cell3= row2.insertCell(0);
+            const cell4 =row2.insertCell(1);
+            cell3.innerHTML = "operator";
+            cell4.innerHTML = operator;
+            const row3= table.insertRow();
+            const cell5= row3.insertCell(0);
+            const cell6 =row3.insertCell(1);
+            cell5.innerHTML="second number:";
+            cell6.innerHTML= secondNumber;
+            const row4= table.insertRow();
+            const cell7= row4.insertCell(0);
+            const cell8 =row4.insertCell(1);
+            cell7.innerHTML = "Total:";
+            cell8.innerHTML = result;
+        }
+    </script>
+</body>
+</html>
